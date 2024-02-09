@@ -3,8 +3,8 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN amazon-linux-extras enable docker && \
     yum install -y jq containerd wget which && \
     wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 && \
-    chmod a+x /usr/local/bin/yq
-
+    chmod a+x /usr/local/bin/yq 
+    
 ENV IMDS_ENDPOINT=127.0.0.1:1338
 COPY --from=aemm /ec2-metadata-mock /sbin/ec2-metadata-mock
 RUN mkdir -p /etc/systemd/system
